@@ -32,7 +32,11 @@ public:
      * Destroys a dictionary.
      */
     ~Dictionary() = default;
-
+    void userMenu();
+    void printAll();
+    void findWord();
+    void insertWord();
+    bool exists(string s);
 };
 
 

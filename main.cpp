@@ -1,6 +1,12 @@
 #include <iostream>
 
+#include "Dictionary.hpp"
+
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+
+    Dictionary d("../dictionary.txt");
+
+    d.userMenu();
+
     return 0;
 }
