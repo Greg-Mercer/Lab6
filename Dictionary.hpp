@@ -10,10 +10,15 @@
 
 using namespace std;
 
+/*
+ * A dictionary. Stores words and their definitions in format "word - definition \n".
+ * Has functions for reading from and writing to the dictionary, using a text file resource.
+ */
 class Dictionary {
 private:
     /* A dictionary. Stores words and their definitions. */
     map<string, string> dictionary;
+    /* The filename this dictionary uses as a resource. */
     string resource;
 
 public:
@@ -23,20 +28,32 @@ public:
      */
     Dictionary(string s);
     /*
-     * Puts the dictionary into an output stream in an easily readable format.
-     * @param os the stream to put the matrix into
-     * @param d the dictionary to put into the stream
-     * @return the output stream with the dictionary
-     */
-    friend ostream& operator<<(ostream& os, const Dictionary& d);
-    /*
      * Destroys a dictionary.
      */
     ~Dictionary() = default;
+    /*
+     * Displays a menu for the user. Reads user input to determine what actions to perform.
+     */
     void userMenu();
+    /*
+     * Prints the dictionary's contents to cout in an easily readable format.
+     */
     void printAll();
+    /*
+     * Prompts the user to search for a word in the dictionary. Prints results of search to cout.
+     */
     void findWord();
+    /*
+     * Prompts the user to enter a word into the dictionary. If the word does not already exist,
+     * the user enters a definition and their input is saved to the dictionary and its text file
+     * resource.
+     */
     void insertWord();
+    /*
+     * Checks if a given string is a word in the dictionary.
+     * @param s the word to check
+     * @return true if the word exists in the dictionary, else false
+     */
     bool exists(string s);
 };
 
