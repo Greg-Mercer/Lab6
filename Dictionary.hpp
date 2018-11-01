@@ -14,6 +14,7 @@ class Dictionary {
 private:
     /* A dictionary. Stores words and their definitions. */
     map<string, string> dictionary;
+    string resource;
 
 public:
     /*

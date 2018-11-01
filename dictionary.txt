@@ -1,3 +1,3 @@
-word - definition
 c++ - A programming language.
-dictionary - A collection of words and their definitions. It bugs out if you use hyphens and newlines in your definitions.
+dictionary - A collection of words and their definitions. It bugs out if you use hyphens and newlines in your definitions. 
+word - definition 

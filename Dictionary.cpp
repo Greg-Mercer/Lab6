@@ -9,7 +9,13 @@
 #include <iterator>
 #include "Dictionary.hpp"
 
+#define SYSERROR() errno
+
+typedef map<string, string>::iterator ssIter;
+
 Dictionary::Dictionary(string s) {
+    resource = s;
+
     ifstream file;
     file.open(s);
     string word;
@@ -69,12 +75,11 @@ void Dictionary::userMenu() {
 }
 
 void Dictionary::printAll() {
-    typedef map<string, string>::iterator ssIter;
     cout << endl;
 
     for (ssIter values = dictionary.begin();
          values != dictionary.end(); ++values) {
-        cout << values->first << " - " << values->second << endl;
+         cout << values->first << " - " << values->second << endl;
     }
 }
 
@@ -128,6 +133,18 @@ void Dictionary::insertWord() {
                 def += curr + " ";
             }
             dictionary.insert(make_pair(word, def));
+            ofstream fout(resource);
+
+            if(fout.is_open()) {
+                for (ssIter values = dictionary.begin();
+                     values != dictionary.end(); ++values) {
+                     fout << values->first << " - " << values->second << endl;
+                }
+                fout.close();
+                cout << "Saved to dictionary." << endl;
+            } else {
+                cerr << "Failed to create file : " << SYSERROR() << endl;
+            }
         }
     }
 
